@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCare</title>
+
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
+        :root {
+            --primary-bg: #f1f2fb;
+            --secondary-bg: #373752dc;
+
+            --prime-txtcolor: whitesmoke;
+            --second-txtcolor: #2e2e2e;
+
+            --prime-text: "Inter", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 10px;
+
+            background-color: whitesmoke;
+
+            font-family: var(--prime-text);
+            font-weight: 400;
+            color: var(--second-txtcolor);
+            font-size: 0.7rem;
+
+            overflow: hidden;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px 0;
+
+            background-color: var(--secondary-bg);
+            box-shadow: 2px 0 10px #0000001a;
+            border-right: 1px solid #000000;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100%;
+        }
+
+        .user-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--prime-txtcolor);
+        }
+
+        .user-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav-icons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .nav-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 50px;
+            margin: 10px 0;
+            text-decoration: none;
+            color: var(--prime-txtcolor);
+        }
+
+        .nav-icons img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-icons a:hover {
+            background-color: #1d1c1c49;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: calc(100% - 80px); 
+            margin-left: 80px; 
+            height: 100vh;
+
+            border-left: 1px solid #000000;
+            border-right: 1px solid #000000;
+
+            background: var(--primary-bg) url("./assets/bg (3).png");
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            background-position: center;
+        }
+            
+
+        .user-icon-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            width: 15vw;
+            height: 8vh;
+
+            background-color: var(--secondary-bg);
+            box-shadow: 0 4px 8px #0000001a;
+            border-radius: 20px;
+
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .user-icon-container img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user-icon-container p {
+            color: var(--prime-txtcolor);
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 38vh;
+        }
+        
+        .place {
+            width: 100%;
+            height: 40vh;
+            font-size: 2rem;
+            font-weight: 400;
+            align-self: flex-start;
+
+            color: var(--prime-txtcolor);
+            padding-left: 30px;
+            margin-bottom: 7px;
+
+            background-color: var(--secondary-bg);
+            border-top: 1px solid #000000;
+            border-bottom: 1px solid #000000;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+
+            width: 100%;
+            height: 50vh;
+
+            background-color: var(--primary-bg);
+            border-bottom: 1px solid #000000;
+            border-top: 1px solid #000000;
+            margin-bottom: 7px;
+        }
+
+        .hero-content article {
+            width: 60%;
+            height: 100%;
+
+            padding: 20px;
+            padding-left: 40px;
+            border-right: 1px solid #000000;
+            background: var(--primary-bg) url("./assets/backg.png");
+            background-size: 100px 100px;
+            background-position: center;
+            background-repeat: repeat;
+        }
+
+        .hero-content article h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--second-txtcolor);
+            margin-bottom: 10px;
+        }
+
+        .hero-content article p {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--second-txtcolor);
+            margin-bottom: 10px;
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #6b4d4d1a;  
+
+            width: 40%;
+            height: 100%;
+            background-image: url("./assets/contbg (2).png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .main-content-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            height: 59vh;
+            gap: 6px;
+
+            border-top: 1px solid #000000;
+            margin-top: 3px;
+            border-bottom: 1px solid #000000;
+        }
+
+        .right-content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 40%;
+            height: 100%;
+            margin-right: 7px;
+            gap: 7px;
+
+            border-left: 1px solid #000000;
+            border-right: 1px solid #000000;
+            background: var(--primary-bg ) url("./assets/backg.png");
+            background-size: 150px 150px;
+            background-position: center;
+            background-repeat: repeat;
+        }
+
+        .calendar-cont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 69vh;
+
+            margin-top: 7px;
+            background-color: var(--primary-bg);
+            border-top: 1px solid #000000; 
+            border-bottom: 1px solid #000000;
+            overflow: hidden;
+        }
+
+        .buttons-cont {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 29vh;
+
+            margin-bottom: 7px;
+            border-top: 1px solid #000000;
+            cursor: pointer;
+
+            background-color: var(--primary-bg);
+        }
+
+        .buttons-cont button {
+            width: 100%;
+            height: 40px;
+
+            background-color: var(--secondary-bg);
+            border: none;
+            border-bottom: 1px solid #000000;
+            color: var(--prime-txtcolor);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .buttons-cont button:hover {
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor);
+        }
+
+        .left-content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 60%;
+            height: 100%;
+            margin-left: 7px;
+            gap: 7px;
+
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            background-color: var(--primary-bg);
+        }
+
+        .head-list {
+            width: 100%;
+            height: 14vh;
+
+            background-color: var(--secondary-bg);
+            border-bottom: 1px solid #000000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .head-list h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding-left: 20px;
+            color: var(--prime-txtcolor);
+        }
+
+        .list-container {
+            width: 100%;
+            height: 84vh;
+            overflow-y: auto;
+            border-top: 1px solid #000000;
+        }
+
+        .list-container p {
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding-left: 20px;
+            color: var(--second-txtcolor);
+        }
+
+        #list-of-patients div {
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #list-of-patients::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #list-of-patients::-webkit-scrollbar-track {
+            background: var(--primary-bg); 
+            border-left: 1px solid #000000;
+        }
+
+        #list-of-patients::-webkit-scrollbar-thumb {
+            background: var(--secondary-bg); 
+        }
+
+        /*all modals*/
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #00000080;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 90%;
+            max-width: 45vw;
+            min-height: 20vh;
+            max-height: 60vh;
+
+            background-color: var(--primary-bg);
+            border: 1px solid #000;
+            overflow-y: auto;
+            box-shadow: 0 4px 12px #0000004d;
+        }
+
+        .modal-content h2 {
+            width: 100%;
+
+            margin-top: 3px;
+            padding-left: 2vw;
+            padding-top: 1vh;
+            padding-bottom: 1vh;
+
+            border-bottom: 1px solid #000;  
+            border-top: 1px solid #000;
+            text-align: left;
+        }
+
+        .modal-content label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding-top: 5px;
+            margin-top: 3px;
+
+            color: var(--second-txtcolor);
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .modal-content select {
+            width: 100%;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            padding: 7px;
+
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor);
+
+            border: none;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            
+            font-size: 0.9rem;
+            font-family: inherit;
+
+            cursor: pointer;
+            appearance: none;
+
+        }
+
+        .modal-content select:hover {
+            background-color: var(--secondary-bg);
+            color: var(--prime-txtcolor);
+        }
+
+        .modal-content select option {
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor);
+        }
+
+        .modal-content select option:hover {
+            background-color: var(--secondary-bg);
+            color: var(--prime-txtcolor);
+        }
+
+        /* bmi calcu */
+        .bmi-modal-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 3px;
+
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            width: 100%;
+            height: 6vh;
+        }
+
+        .bmi-modal-buttons button {
+            width: 100%;
+            background-color: var(--secondary-bg);
+            color: white;
+
+            padding: 7px;
+            margin-bottom: 3px;
+            border: none;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .bmi-modal-buttons button:hover {
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor) ;
+        }
+
+        #bmi-list {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+        }
+
+        #bmi-list li {
+            padding: 5px 0;
+            padding-left: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: var(--primary-bg); 
+            border-left: 1px solid #000000;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: var(--secondary-bg); 
+        }
+
+        /* patient queue */
+
+        .queue-modal-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 3px;
+
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            width: 100%;
+            height: 6vh;
+        }
+
+        .queue-modal-buttons button {
+            width: 100%;
+            background-color: var(--secondary-bg);
+            color: white;
+
+            padding: 7px;
+            margin-bottom: 3px;
+            border: none;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .queue-modal-buttons button:hover {
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor) ;
+        }
+
+        #queue-list {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+        }
+
+        #queue-list li {
+            padding: 5px 0;
+            padding-left: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /*medication tracker*/
+
+        .meds-modal-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            margin-top: 3px;
+
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            width: 100%;
+            height: 6vh;
+        }
+
+        .meds-modal-buttons button {
+            width: 100%;
+            background-color: var(--secondary-bg);
+            color: white;
+
+            padding: 7px;
+            margin-bottom: 3px;
+            border: none;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .meds-modal-buttons button:hover {
+            background-color: var(--primary-bg);
+            color: var(--second-txtcolor) ;
+        }
+
+        #meds-list {
+            width: 100%;
+            list-style: none;
+            padding: 0;
+        }
+
+        #meds-list li {
+            padding: 5px 0;
+            padding-left: 30px;
+            border-bottom: 1px solid #ddd;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="sidebar">
+        <div class="user-img">
+            <img src="./assets/osbev.jpeg" alt="User Image">
+        </div>
+        <div class="nav-icons">
+            <a href="#"><img src="./assets/1.png" alt="Home"></a>
+            <a href="#"><img src="./assets/2.png" alt="BMI"></a>
+            <a href="#"><img src="./assets/3.png" alt="Queue"></a>
+            <a href="#"><img src="./assets/4.png" alt="Tracker"></a>
+        </div>
+    </section>
+ 
+    <main>
+        <div class="user-icon-container">
+            <img src="./assets/osbev.jpeg" alt="User Image">
+            <p>Osbev Erica D. Cabucos</p>
+        </div>
+
+        <section class="hero-container">
+            <div class="place">
+                <h1><em>Dashboard</em></h1>
+            </div>
+            <div class="hero-content">
+                <article>
+                    <h2>BeCare Hospital</h2>
+                    <p>
+                        At BeCare Hospital, we believe that quality healthcare goes beyond treatment—it's 
+                        about genuine compassion and dedication to every patient. Our system is designed to 
+                        provide a seamless experience, from managing your health records to tracking medications 
+                        and appointments, so you can focus on what truly matters: getting better. With BeCare, you're 
+                        not just cared for—you’re cared about.
+                    </p>
+
+                    <p><b>BeCare Hospital</b> — <em>Crafted for Care, Driven by You</em></p>
+                </article>
+
+                <div class="img-container">
+                    <img src="./assets/logo.png" alt="BCare Logo">
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content-container">
+            <div class="left-content-container">
+                <div class="head-list">
+                    <h2><em>List of Patients</em></h2>
+                </div>
+
+                <div id="list-of-patients" class="list-container"></div>
+            </div>
+
+            <div class="right-content-container">
+                <div class="calendar-cont">
+                    <iframe
+                        src="https://calendar.google.com/calendar/embed?src=en.philippines%23holiday%40group.v.calendar.google.com&ctz=Asia%2FManila" 
+                        style="border: 0; width: 95%; height: 250px; border-radius: 10px;" 
+                        frameborder="0" 
+                        scrolling="no">
+                    </iframe>
+                </div>
+
+                <div class="buttons-cont">
+                    <button onclick="openModal()">BMI Calculator</button>
+                    <button onclick="openQueueModal()">Patient Queue</button>
+                    <button onclick="openMedsModal()">Medication Tracker</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Osbev Erica. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <div id="bmi-modal" class="modal">
+        <div class="modal-content">
+            <h2>Patient BMI Calculator</h2>
+            <label for="bmi-dropdown">Select Patient:</label>
+            <select id="bmi-dropdown"></select>
+    
+            <div class="bmi-modal-buttons">
+                <button onclick="calculateBMI()">Calculate BMI</button>
+                <button onclick="toggleAllPatients()">Show All Patients</button>
+                <button onclick="closeModal()">Close</button>
+            </div>
+    
+            <ul id="bmi-list"></ul>
+        </div>
+    </div>
+
+    <div id="queue-modal" class="modal">
+        <div class="modal-content">
+            <h2>Hospital Patient Queue</h2>
+    
+            <label for="queue-dropdown">Select Patient:</label>
+            <select id="queue-dropdown"></select>
+    
+            <div class="queue-modal-buttons">
+                <button onclick="addToQueue()">Add to Queue</button>
+                <button onclick="removeFromQueue()">Remove from Queue</button>
+                <button onclick="viewQueue()">View Queue</button>
+                <button onclick="closeQueueModal()">Close</button>
+            </div>
+    
+            <ul id="queue-list"></ul>
+        </div>
+    </div>
+
+    <div id="meds-modal" class="modal">
+        <div class="modal-content">
+            <h2>Medication Tracker</h2>
+    
+            <label for="meds-dropdown">Select Patient:</label>
+            <select id="meds-dropdown"></select>
+    
+            <div class="meds-modal-buttons">
+                <button onclick="checkMedications()">Check Medications</button>
+                <button onclick="updateMedication()">Update Last Taken</button>
+                <button onclick="closeMedsModal()">Close</button>
+            </div>
+    
+            <ul id="meds-list"></ul>
+        </div>
+    </div>
+    
+  
+    <script>
+        // my five predefined patients info
+        var patients = [
+            { 
+                name: "Matt Maltese", height: 1.75, weight: 70, 
+                NameOfMedication: "Methylprednisolone", Dosage: "500mg", Frequency: "every 6 hours", LastTakenTime: "12:45 PM" 
+            },
+            { 
+                name: "Lee Hyeri", height: 1.60, weight: 65, 
+                NameOfMedication: "Hydrochlorothiazide", Dosage: "500mg", Frequency: "every 6 hours", LastTakenTime: "12:45 PM" 
+            },
+            { 
+                name: "Lee Seulgi", height: 1.54, weight: 70, 
+                NameOfMedication: "Allopurinol", Dosage: "500mg", Frequency: "every 6 hours", LastTakenTime: "12:45 PM" 
+            },
+            { 
+                name: "Lee Heeseung", height: 1.82, weight: 90, 
+                NameOfMedication: "Amoxicillin", Dosage: "500mg", Frequency: "every 6 hours", LastTakenTime: "12:45 PM" 
+            },
+            { 
+                name: "Park Sunoo", height: 1.85, weight: 80, 
+                NameOfMedication: "Methocarbamol", Dosage: "500mg", Frequency: "every 6 hours", 
+                LastTakenTime: "12:45 PM" 
+            }
+        ];
+
+        // i created a function to generate random patients
+        function getRandomPatient() {
+            const names = ["Kim Taehyung", "Jeon Jungkook", "Kim Seokjin", "Min Yoongi", "Jung Hoseok", "Park Jimin", "Kim Namjoon"];
+            const medications = ["Ibuprofen", "Paracetamol", "Aspirin", "Metformin", "Lisinopril"];
+            const dosages = ["250mg", "500mg", "100mg"];
+            const frequencies = ["every 4 hours", "every 6 hours", "every 8 hours"];
+            
+            return {
+                name: names[Math.floor(Math.random() * names.length)],
+                height: parseFloat((1.5 + Math.random() * 0.5).toFixed(2)),
+                weight: Math.floor(50 + Math.random() * 50),
+                NameOfMedication: medications[Math.floor(Math.random() * medications.length)],
+                Dosage: dosages[Math.floor(Math.random() * dosages.length)],
+                Frequency: frequencies[Math.floor(Math.random() * frequencies.length)],
+                LastTakenTime: Math.floor(Math.random() * 12 + 1) + ":" + Math.floor(Math.random() * 60).toString().padStart(2, '0') + " " + (Math.random() > 0.5 ? 'AM' : 'PM')
+            };
+        }
+
+        while (patients.length < 100) patients.push(getRandomPatient());
+
+        // heres to display the list of patients (they are randomly generated huhu)
+        function displayPatients() {
+            const listContainer = document.getElementById('list-of-patients');
+            patients.forEach(function(patient) {
+                const patientDiv = document.createElement('div');
+                patientDiv.innerHTML = "<p>" + patient.name + "</p>";
+                listContainer.appendChild(patientDiv);
+            });
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+
+        function closeModal(modalId, listId) {
+            document.getElementById(modalId).style.display = "none";
+            if (listId) document.getElementById(listId).innerHTML = "";
+        }
+
+        // here starts the BMI calculator
+        function initializeDropdowns() {
+            const dropdowns = {
+                "bmi-dropdown": [],
+                "queue-dropdown": [],
+                "meds-dropdown": []
+            };
+
+            patients.forEach(function(patient) {
+                Object.keys(dropdowns).forEach(function(id) {
+                    const option = document.createElement("option");
+                    option.value = patient.name;
+                    option.text = patient.name;
+                    document.getElementById(id).appendChild(option);
+                });
+            });
+        }
+
+        function getBMICategory(bmi) {
+            if (bmi < 18.5) return "Underweight";
+            if (bmi < 25.0) return "Normal";
+            if (bmi < 30.0) return "Overweight";
+            if (bmi < 35.0) return "Obesity";
+            return "Extreme Obesity";
+        }
+
+        function calculateBMI() {
+            const selectedName = document.getElementById("bmi-dropdown").value;
+            const bmiList = document.getElementById("bmi-list");
+            bmiList.innerHTML = "";
+            const patient = patients.find(function(p) { return p.name === selectedName; });
+            if (patient) {
+                const bmi = (patient.weight / (patient.height ** 2)).toFixed(2);
+                bmiList.innerHTML = "<li>" + patient.name + " - BMI: " + bmi + " (" + getBMICategory(bmi) + ")</li>";
+            }
+        }
+
+        function toggleAllPatients() {
+            const bmiList = document.getElementById("bmi-list");
+            if (bmiList.innerHTML) {
+                bmiList.innerHTML = "";
+            } else {
+                const bmiCategories = {
+                    "Underweight": 1,
+                    "Normal": 2,
+                    "Overweight": 3,
+                    "Obesity": 4,
+                    "Extreme Obesity": 5
+                };
+
+                bmiList.innerHTML = patients
+                    .map(function(p) {
+                        const bmi = (p.weight / (p.height ** 2)).toFixed(2);
+                        const category = getBMICategory(bmi);
+                        return {
+                            name: p.name,
+                            bmi: bmi,
+                            category: category
+                        };
+                    })
+                    .sort(function(a, b) {
+                        return bmiCategories[a.category] - bmiCategories[b.category];
+                    })
+                    .map(function(p) {
+                        return "<li>" + p.name + " - BMI: " + p.bmi + " (" + p.category + ")</li>";
+                    })
+                    .join("");
+            }
+        }
+
+        // here starts the patient queue
+        let patientQueue = [];
+
+        function addToQueue() {
+            const name = document.getElementById("queue-dropdown").value;
+            if (!patientQueue.includes(name)) {
+                patientQueue.push(name);
+                alert(name + " added to the queue.");
+            } else {
+                alert(name + " is already in the queue.");
+            }
+        }
+
+        function removeFromQueue() {
+            if (!patientQueue.length) return alert("Queue is empty.");
+            alert(patientQueue.shift() + " removed from the queue.");
+            viewQueue();
+        }
+
+        function viewQueue() {
+            const queueList = document.getElementById("queue-list");
+            queueList.innerHTML = patientQueue.length
+                ? patientQueue.map(function(name, i) {
+                    return "<li>" + (i + 1) + ". " + name + "</li>";
+                }).join("")
+                : "<li>No patients in queue.</li>";
+        }
+
+        // here starts the med tracker
+        let medicationSchedule = [];
+
+        function extractFrequencyInHours(frequency) {
+            return parseInt(frequency.match(/\d+/)[0]) || 6;
+        }
+
+        function initializeMedications() {
+            const extraMeds = ["Ibuprofen", "Aspirin", "Metformin", "Lisinopril"];
+            medicationSchedule = patients.map(function(p) {
+                return {
+                    patientName: p.name,
+                    medications: [
+                        { 
+                            name: p.NameOfMedication, dosage: p.Dosage, 
+                            frequency: extractFrequencyInHours(p.Frequency), 
+                            lastTakenTime: Date.now() - (Math.random() * 10 + 1) * 3600000 
+                        },
+                        { 
+                            name: extraMeds[Math.floor(Math.random() * extraMeds.length)], 
+                            dosage: "500mg", frequency: 6, lastTakenTime: Date.now() - (Math.random() * 10 + 1) * 3600000 
+                        }
+                    ]
+                };
+            });
+        }
+
+        function checkMedications() {
+            const name = document.getElementById("meds-dropdown").value;
+            const medsList = document.getElementById("meds-list");
+            medsList.innerHTML = "";
+            const patientMeds = medicationSchedule.find(function(p) { return p.patientName === name; });
+
+            if (!patientMeds) return medsList.innerHTML = "<li>No medications found.</li>";
+
+            patientMeds.medications.forEach(function(med) {
+                const hours = ((Date.now() - med.lastTakenTime) / 3600000).toFixed(1);
+                medsList.innerHTML += 
+                    "<li>" + med.name + " (" + med.dosage + ") - Every " + med.frequency + " hrs - Last taken " + hours + " hrs ago " + 
+                    (hours >= med.frequency ? "<span style='color:red;'>(Due!)</span>" : "(Not yet due)") + "</li>";
+            });
+        }
+
+        function updateMedication() {
+            const name = document.getElementById("meds-dropdown").value;
+            const patient = medicationSchedule.find(function(p) { return p.patientName === name; });
+            if (patient) patient.medications.forEach(function(m) { m.lastTakenTime = Date.now(); });
+            alert("Updated medications for " + name + ".");
+            checkMedications();
+        }
+    
+        window.onload = () => {
+            initializeDropdowns();
+            displayPatients();
+            initializeMedications();
+        };
+
+        // to open the stuffs
+        function openModal() {
+            document.getElementById('bmi-modal').style.display = 'flex';
+        }
+
+        function openQueueModal() {
+            document.getElementById('queue-modal').style.display = 'flex';
+        }
+
+        function openMedsModal() {
+            document.getElementById('meds-modal').style.display = 'flex';
+        }
+
+        // to close the stuffs
+        function closeModal() {
+            document.getElementById('bmi-modal').style.display = 'none';
+        }
+
+        function closeQueueModal() {
+            document.getElementById('queue-modal').style.display = 'none';
+        }
+
+        function closeMedsModal() {
+            document.getElementById('meds-modal').style.display = 'none';
+        }
+
+        // js extra thing so it closes if clicked outside the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('bmi-modal')) {
+                closeModal();
+            } else if (event.target == document.getElementById('queue-modal')) {
+                closeQueueModal();
+            } else if (event.target == document.getElementById('meds-modal')) {
+                closeMedsModal();
+            }
+        };
+
+    </script>
+    
+</body>
+</html>
